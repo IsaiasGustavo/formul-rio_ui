@@ -26,7 +26,7 @@
 .sex{
     position:absolute;
     margin-left: 450px;
-    top:430px;
+    top:500px;
     color:rgb(35, 0, 163);
 }
 .fc1{
@@ -142,4 +142,19 @@
 }
 .tc{
     width:15px;
+}
+.btt{
+    margin-top: 10px;
+    width:50px;
+    height: 20px;
+    color:rgb(92, 51, 187);
+    border-radius: 15px;
+    margin-left: 20px;
+}
+.btn{
+    margin-top: 10px;
+    width:140px;
+    height: 25px;
+    color:rgb(92, 51, 187);
+    border-radius: 15px;
 }
