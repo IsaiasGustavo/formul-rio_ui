@@ -87,7 +87,9 @@ function checaCPF (CPF) {
     }
 
     
+     
 
+    
 
     alert(checaCPF('34485861023'));
 
