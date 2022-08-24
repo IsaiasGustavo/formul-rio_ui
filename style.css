@@ -1,3 +1,4 @@
+/*
 *{
     margin:0%;
     padding:0%;
@@ -136,10 +137,11 @@
 }
 .hide{
     display:none;
-}
+} */
 .show{
     display:block;
 }
+/*
 .tc{
     width:15px;
 }
@@ -158,3 +160,4 @@
     color:rgb(92, 51, 187);
     border-radius: 15px;
 }
+*/
