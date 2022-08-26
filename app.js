@@ -35,7 +35,6 @@ cnpjNumber.addEventListener("keypress", function() {
         cnpjNumber.value += '-'
     }
 });
-/*
 var telNumber = document.getElementById("telNumber");
 
 telNumber.addEventListener("keypress", function() {
@@ -48,7 +47,7 @@ telNumber.addEventListener("keypress", function() {
     }else if(telLength === 8) {
         telNumber.value += '-'
     }
-});*/
+});
 
 var cepNumber = document.getElementById("cepNumber");
 
@@ -59,6 +58,12 @@ cepNumber.addEventListener("keypress", function() {
         cepNumber.value += '-'
     }
 });
+
+var dnNumber = document.getElementById("dnNumber");
+
+dnNumber.addEventListener("keypress", function() {
+
+})
 
 function checaCPF (CPF) {
     if (CPF.length != 11 || CPF == "00000000000" || CPF == "11111111111" ||
@@ -91,5 +96,5 @@ function checaCPF (CPF) {
 
     
 
-    alert(checaCPF('34485861023'));
+   // alert(checaCPF('34485861023'));
 
