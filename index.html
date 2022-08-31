@@ -10,35 +10,31 @@
 
 <body>                     <!--este container está fixo-->
     <form name="Ficha_de_cadastro" action="#" id="fc" method="get" class="p-4 text-align-center">
-       <button type="button" class="" style="width:170px; height:35px" id="btpj" name="btpj">Sou pessoa Juridica</button>
+       <button type="button" data-bs-toggle="collapse" data-bs-target="#pj" class="" style="width:170px; height:35px" id="btpj" name="btpj">Sou pessoa Juridica</button>
     <div class="container-fluid row">
-       <div class="container-fluid col">   
+        <div id="pp" class="container-fluid col">   
             <label class="">Nome</label><br>
             <input class="" type="text"><br>
         
             <label class="">CPF</label><br>
             <input class="" type="text" maxlength="14" id="cpfNumber" name="cpfNumber" required><br>
-        <div class="hide" id="pj" name="pj">
-        <style>
-            .hide{
-                display:none;
-            }
-            .show{
-                display:block;
-            }
-        </style>   
-            <label class="">Razão Social</label><br>
-            <input class="" type="text"><br>
-            <label class="">Nome Fantasia</label><br>
-            <input class="container-fluid col" type="text"><br>
-            <label class="">CNPJ</label><br>
-            <input class="container-fluid col" type="text" name="cnpjNumber" id="cnpjNumber" maxlength="18" required><br>
-        </div>  
+  
             <label class="">Senha</label><br>
             <input class="" type="password" pattern="[a-zA-Z0-9]{10}"><br>
             <label class="">Telefone</label><br>
             <input class="" type="tel" id="telNumber" name="telNumber" pattern="/([0-9]{2}\)[0-9]{4}-[0-9]{4})/" placeholder="  (__)____-____"
                 maxlength=""><br>
+            <label class="collapse" id="pj">Razão Social</label><br>
+            <input class="collapse" id="pj" type="text"><br>
+            <label class="collapse" id="pj">CNPJ</label><br>
+            <input class="collapse" id="pj" type="text" name="cnpjNumber" id="cnpjNumber" maxlength="18" required><br>
+            <label class="">CEP</label><br>
+            <input class="" id="cepNumber" name="cepNumber" type="text" maxlength="9"><br>
+        
+            <label class="">Estado</label><br>
+            <input class="" type="text"><br>
+            <label class="">Bairro</label><br>
+            <input class="" type="text">
         </div>
         <div id="sp" class="container-fluid col">
                 <label class="">Sobrenome</label><br>
@@ -49,8 +45,16 @@
                 <input class="" type="password" pattern="[a-zA-Z0-9]{10}"><br>
                 <label class="">Data de Nascimento</label><br>
                 <input class="" id="dnNumber" type="tel" pattern="" placeholder="   ___/___/____"><br>
-            </div>
+                <label class="collapse" id="pj">Nome Fantasia</label><br>
+                <input class="collapse" id="pj" type="text"><br>
+                <label class="">Logradouro</label><br>
+                <input class="" type="text"><br>
+                <label class="">Cidade</label><br>
+                <input class="" type="text"><br>
+                <label class="">Número</label><br>
+                <input class="" type="text"><br>
         </div>
+    </div>   
     </div>
         <div class="">
             <label class="">Sexo</label><br>
@@ -60,30 +64,6 @@
             <label>Feminino</label>
             <input type="radio" name="s,n" value="P">
             <label>Prefiro não informar</label>
-        </div>
-        <div class="">
-            <label class="">CEP</label><br>
-            <input class="" id="cepNumber" name="cepNumber" type="text" maxlength="9">
-        </div>
-        <div class="">
-            <label class="">Logradouro</label><br>
-            <input class="" type="text">
-        </div>
-        <div class="">
-            <label class="">Estado</label><br>
-            <input class="" type="text">
-        </div>
-        <div class="">
-            <label class="">Cidade</label><br>
-            <input class="" type="text">
-        </div>
-        <div class="">
-            <label class="">Bairro</label><br>
-            <input class="" type="text">
-        </div>
-        <div class="">
-            <label class="">Número</label><br>
-            <input class="" type="text">
         </div>
         <div class="">
             <label class="">Opiniões</label><br>
