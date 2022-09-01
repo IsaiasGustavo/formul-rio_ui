@@ -11,10 +11,10 @@
 
 <body>
     <!--este container está fixo-->
-    <form name="Ficha_de_cadastro" action="#" id="fc" method="get" class="p-4 text-align-center ">
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#pj" class="" style="width:170px; height:35px"
+    <form name="Ficha_de_cadastro" action="#" id="fc" method="get" class="p-4 mx-auto" style="width:500px;">
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#pj" class="btn border rounded-5" style="width:170px; height:35px; margin-left:120px; background-color: blueviolet; color:aliceblue"
             id="btpj" name="btpj">Sou pessoa Juridica</button>
-        <div class="">
+        <div class="mt-3">
             <div id="pp" class="row input-group mb-3 fw-semibold">
                 <div class="col-md-6">
                     <label class="">Nome</label><br>
@@ -41,19 +41,32 @@
                     <input class="" type="password" pattern="[a-zA-Z0-9]{10}"><br>
                 </div>
                 <div class="col-md-6">
-                    <label class="">Telefone</label><br>
-                    <input class="" type="tel" id="telNumber" name="telNumber" pattern="/([0-9]{2}\)[0-9]{4}-[0-9]{4})/"
-                placeholder="  (__)____-____" maxlength=""><br>
+                    <label class="">Confirme a Senha</label><br>
+                    <input class="" type="password" pattern="[a-zA-Z0-9]{10}"><br>
                 </div>
             </div>
             <div id="pp" class="row input-group mb-3 fw-semibold">
                 <div class="col-md-6">
-                    <label class="collapse" id="pj">Razão Social</label><br>
-                    <input class="collapse" id="pj" type="text"><br>
+                    <label class="">Telefone</label><br>
+                    <input class="" type="tel" id="telNumber" name="telNumber" pattern="/([0-9]{2}\)[0-9]{4}-[0-9]{4})/"
+                placeholder="  (__)____-____" maxlength=""><br>
                 </div>
                 <div class="col-md-6">
+                    <label class="">Data de Nascimento</label><br>
+                    <input class="" id="dnNumber" type="tel" pattern="" placeholder="   ___/___/____"><br>
+                </div>
+            <div id="pp" class="row input-group mb-3 fw-semibold">
+                <div class="col-md-6 mt-3">
+                    <label class="collapse" id="pj">Razão Social</label><br>
+                    <input class="collapse" id="pj" type="text"><br>
                     <label class="collapse" id="pj">CNPJ</label><br>
                     <input class="collapse" id="pj" type="text" name="cnpjNumber" id="cnpjNumber" maxlength="18" required><br>
+                </div>
+                <div class="col-md-6 mt-3" >
+                    <label class="collapse" id="pj">Nome Fantasia</label><br>
+                    <input class="collapse mb-3" id="pj" type="text"><br>
+                    
+            </div>
                 </div>
             </div>
             <div id="pp" class="row input-group mb-3 fw-semibold">
@@ -62,43 +75,31 @@
                     <input class="" id="cepNumber" name="cepNumber" type="text" maxlength="9"><br>
                 </div>
                 <div class="col-md-6">
-                    <label class="">Estado</label><br>
-                    <input class="" type="text"><br>
-                </div>
-            </div>
-            <div id="pp" class="row input-group mb-3 fw-semibold">
-                <div class="col-md-6">
-                    <label class="">Bairro</label><br>
-                    <input class="" type="text">
-                </div>
-                <div class="col-md-6">
-                    <label class="">Confirme a Senha</label><br>
-                    <input class="" type="password" pattern="[a-zA-Z0-9]{10}"><br>
-                </div>
-            </div>
-            <div id="pp" class="row input-group mb-3 fw-semibold">
-                <div class="col-md-6">
-                    <label class="">Data de Nascimento</label><br>
-                    <input class="" id="dnNumber" type="tel" pattern="" placeholder="   ___/___/____"><br>
-                </div>
-                <div class="col-md-6">
-                    <label class="collapse" id="pj">Nome Fantasia</label><br>
-                    <input class="collapse" id="pj" type="text"><br>
-                </div>
-            </div>
-            <div id="pp" class="row input-group mb-3 fw-semibold">
-                <div class="col-md-6">
                     <label class="">Logradouro</label><br>
                     <input class="" type="text"><br>
+                </div>
+            </div>
+            <div id="pp" class="row input-group mb-3 fw-semibold">
+                <div class="col-md-6">
+                    <label class="">Estado</label><br>
+                    <input class="" type="text">
                 </div>
                 <div class="col-md-6">
                     <label class="">Cidade</label><br>
                     <input class="" type="text"><br>
                 </div>
             </div>
+            <div id="pp" class="row input-group mb-3 fw-semibold">
+                <div class="col-md-6">
+                    <label class="">Bairro</label><br>
+                    <input class="" type="text"><br>
+                </div>
+                <div class="col-md-6">
                     <label class="">Número</label><br>
                     <input class="" type="text"><br>
-            
+                </div>
+            </div>
+                
         </div>
         <label class="">Sexo</label><br>
         <input type="radio" name="s,n" value="M">
@@ -114,7 +115,7 @@
             <label><a href=http://127.0.0.1:5501/index.html>Termos e Condições</a></label>
 
         </div>
-        <button class="btt" type="submit">Enviar</button>
+        <button class="btn border rounded-4 bg-success" style="color:aliceblue" type="submit">Enviar</button>
 
     </form>
 
