@@ -1,3 +1,16 @@
+var btpj = document.getElementById("btpj");
+
+btpj.addEventListener("click", function() {
+
+    var pj = document.getElementById("pj");
+    if(pj.style.display ==="block") {
+        pj.style.display ="none";
+    } else{
+        pj.style.display = "block";
+    }
+
+});
+
 // Máscaras 
 
 var cpfNumber = document.getElementById("cpfNumber");
