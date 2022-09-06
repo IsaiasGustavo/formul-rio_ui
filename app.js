@@ -11,6 +11,8 @@ btpj.addEventListener("click", function() {
 
 });
 
+
+
 // Máscaras 
 
 var cpfNumber = document.getElementById("cpfNumber");
@@ -62,11 +64,125 @@ cepNumber.addEventListener("keypress", function() {
     }
 });
 
+//aceitando só números
+
 var dnNumber = document.getElementById("dnNumber");
 
-dnNumber.addEventListener("keypress", function() {
+dnNumber.addEventListener("keypress", function(e) {
 
-})
+    if(!checkChar(e)) {
+        e.preventDefault();
+    }
+
+});
+
+function checkChar(e) {
+
+    const char = String.fromCharCode(e.keyCode);
+
+    const pattern = '[0-9]';
+
+    if(char.match(pattern)) {
+        return true;
+    }
+};
+
+cpfNumber.addEventListener("keypress", function(e) {
+
+    if(!checkChar(e)) {
+        e.preventDefault();
+    }
+
+});
+
+function checkChar(e) {
+
+    const char = String.fromCharCode(e.keyCode);
+
+    const pattern = '[0-9]';
+
+    if(char.match(pattern)) {
+        return true;
+    }
+};
+
+cnpjNumber.addEventListener("keypress", function(e) {
+
+    if(!checkChar(e)) {
+        e.preventDefault();
+    }
+
+});
+
+function checkChar(e) {
+
+    const char = String.fromCharCode(e.keyCode);
+
+    const pattern = '[0-9]';
+
+    if(char.match(pattern)) {
+        return true;
+    }
+};
+
+cepNumber.addEventListener("keypress", function(e) {
+
+    if(!checkChar(e)) {
+        e.preventDefault();
+    }
+
+});
+
+function checkChar(e) {
+
+    const char = String.fromCharCode(e.keyCode);
+
+    const pattern = '[0-9]';
+
+    if(char.match(pattern)) {
+        return true;
+    }
+};
+
+telNumber.addEventListener("keypress", function(e) {
+
+    if(!checkChar(e)) {
+        e.preventDefault();
+    }
+
+});
+
+function checkChar(e) {
+
+    const char = String.fromCharCode(e.keyCode);
+
+    const pattern = '[0-9]';
+
+    if(char.match(pattern)) {
+        return true;
+    }
+};
+
+var nNumber = document.getElementById("nNumber");
+
+nNumber.addEventListener("keypress", function(e) {
+
+    if(!checkChar(e)) {
+        e.preventDefault();
+    }
+
+});
+
+function checkChar(e) {
+
+    const char = String.fromCharCode(e.keyCode);
+
+    const pattern = '[0-9]';
+
+    if(char.match(pattern)) {
+        return true;
+    }
+};
 
 function checaCPF (CPF) {
     if (CPF.length != 11 || CPF == "00000000000" || CPF == "11111111111" ||
