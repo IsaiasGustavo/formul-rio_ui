@@ -163,9 +163,9 @@ function checkChar(e) {
     }
 };
 
-var nNumber = document.getElementById("nNumber");
+var end = document.getElementById("end");
 
-nNumber.addEventListener("keypress", function(e) {
+end.addEventListener("keypress", function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -180,6 +180,7 @@ function checkChar(e) {
     const pattern = '[0-9]';
 
     if(char.match(pattern)) {
+        console.log(char);
         return true;
     }
 };
