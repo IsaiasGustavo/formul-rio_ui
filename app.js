@@ -1,4 +1,12 @@
-var btpj = document.getElementById("btpj");
+$('#btpj').click(
+    function() {
+        $('#pj').fadeToggle(750);
+        $('#pj').css('display','flex');
+    }
+);
+
+
+/*var btpj = document.getElementById("btpj");
 
 btpj.addEventListener("click", function() {
 
@@ -9,60 +17,22 @@ btpj.addEventListener("click", function() {
         pj.style.display = "block";
     }
 
-});
+});*/
 
 
 
 // Máscaras 
 
-var cpfNumber = document.getElementById("cpfNumber");
+$('#cpfNumber').mask("000.000.000-00");
 
-cpfNumber.addEventListener("keypress", function() {
-    var cpfLength = cpfNumber.value.length
+$('#cnpjNumber').mask("00.000.000/0000-00");
 
-    if(cpfLength === 3 || cpfLength === 7) {
-        cpfNumber.value += '.'
-    }else if(cpfLength === 11) {
-        cpfNumber.value += '-'
-    }
-});
+$('#dnNumber').mask("00/00/0000");
 
-var cnpjNumber = document.getElementById("cnpjNumber");
+$('#telNumber').mask("(00)0000-0000");
 
-cnpjNumber.addEventListener("keypress", function() {
-    var cnpjLength = cnpjNumber.value.length
+$('#cep').mask("00000-000");
 
-    if(cnpjLength === 2 || cnpjLength === 6) {
-        cnpjNumber.value += '.'
-    }else if(cnpjLength === 10) {
-        cnpjNumber.value += '/'
-    }else if(cnpjLength === 15) {
-        cnpjNumber.value += '-'
-    }
-});
-var telNumber = document.getElementById("telNumber");
-
-telNumber.addEventListener("keypress", function() {
-    var telLength = telNumber.value.length
-
-    if(telLength === 0) {
-        telNumber.value += '('
-    }else if(telLength === 3) {
-        telNumber.value += ')'
-    }else if(telLength === 8) {
-        telNumber.value += '-'
-    }
-});
-
-var cepNumber = document.getElementById("cepNumber");
-
-cepNumber.addEventListener("keypress", function() {
-    var cepLength = cepNumber.value.length
-
-    if(cepLength === 5) {
-        cepNumber.value += '-'
-    }
-});
 
 //aceitando só números
 
@@ -125,7 +95,7 @@ function checkChar(e) {
     }
 };
 
-cepNumber.addEventListener("keypress", function(e) {
+cep.addEventListener("keypress", function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -163,28 +133,6 @@ function checkChar(e) {
     }
 };
 
-var end = document.getElementById("end");
-
-end.addEventListener("keypress", function(e) {
-
-    if(!checkChar(e)) {
-        e.preventDefault();
-    }
-
-});
-
-function checkChar(e) {
-
-    const char = String.fromCharCode(e.keyCode);
-
-    const pattern = '[0-9]';
-
-    if(char.match(pattern)) {
-        console.log(char);
-        return true;
-    }
-};
-
 function checaCPF (CPF) {
     if (CPF.length != 11 || CPF == "00000000000" || CPF == "11111111111" ||
     CPF == "22222222222" || CPF == "33333333333" || CPF == "44444444444" ||
@@ -218,3 +166,78 @@ function checaCPF (CPF) {
 
    // alert(checaCPF('34485861023'));
 
+
+
+
+   function limpa_formulário_cep() {
+    //Limpa valores do formulário de cep.
+    document.getElementById('rua').value=("");
+    document.getElementById('bairro').value=("");
+    document.getElementById('cidade').value=("");
+    document.getElementById('uf').value=("");
+    document.getElementById('ibge').value=("");
+}
+
+function meu_callback(conteudo) {
+if (!("erro" in conteudo)) {
+    //Atualiza os campos com os valores.
+    document.getElementById('rua').value=(conteudo.logradouro);
+    document.getElementById('bairro').value=(conteudo.bairro);
+    document.getElementById('cidade').value=(conteudo.localidade);
+    document.getElementById('uf').value=(conteudo.uf);
+    document.getElementById('ibge').value=(conteudo.ibge);
+} //end if.
+else {
+    //CEP não Encontrado.
+    limpa_formulário_cep();
+    alert("CEP não encontrado.");
+}
+}
+
+function pesquisacep(valor) {
+
+//Nova variável "cep" somente com dígitos.
+var cep = valor.replace(/\D/g, '');
+
+//Verifica se campo cep possui valor informado.
+if (cep != "") {
+
+    //Expressão regular para validar o CEP.
+    var validacep = /^[0-9]{8}$/;
+
+    //Valida o formato do CEP.
+    if(validacep.test(cep)) {
+
+        //Preenche os campos com "..." enquanto consulta webservice.
+        document.getElementById('rua').value="...";
+        document.getElementById('bairro').value="...";
+        document.getElementById('cidade').value="...";
+        document.getElementById('uf').value="...";
+        document.getElementById('ibge').value="...";
+
+        //Cria um elemento javascript.
+        var script = document.createElement('script');
+
+        //Sincroniza com o callback.
+        script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+        //Insere script no documento e carrega o conteúdo.
+        document.body.appendChild(script);
+
+    } //end if.
+    else {
+        //cep é inválido.
+        limpa_formulário_cep();
+        alert("Formato de CEP inválido.");
+    }
+} //end if.
+else {
+    //cep sem valor, limpa formulário.
+    limpa_formulário_cep();
+}
+};
+
+
+$('#senha').keypress(function() {
+
+})
