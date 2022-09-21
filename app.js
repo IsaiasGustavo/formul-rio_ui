@@ -5,25 +5,85 @@ $('#btpj').click(
     }
 );
 
+$('#fc').validate({
+    rules:{
 
-/*var btpj = document.getElementById("btpj");
+        nome:{
+            required:true,
+            minlength: 4
+        },
+        sobrenome:{
 
-btpj.addEventListener("click", function() {
+        },
+        emailNumber:{
+            required:true,
+            email:true
+        },
+        senha:{
+            required:true,
+            rangelength:[4,10]
+        },
+        cSenha:{
+            required:true,
+            equalto: "#senha"
+        },
+        telNumber:{
+            phoneUS:true,
+            number:true
+        },
+        dnNumber:{
+            dateDE:true
+        },
+        rs:{
+            required:true
+        },
+        cnpjNumber:{
+            numberDE:true
+        },
+        nf:{
+            required:true
+        }
+    },    
+    messages:{
+        nome:{
+            required: "Este Campo é Obrigatório"
+        },
+        sobrenome:{
 
-    var pj = document.getElementById("pj");
-    if(pj.style.display ==="block") {
-        pj.style.display ="none";
-    } else{
-        pj.style.display = "block";
+        },
+        emailNumber:{
+            required: "Este Campo é Obrigatório"
+        },
+        senha:{
+            required: "Este Campo é Obrigatório"
+        },
+        cSenha:{
+            required: "Este Campo é Obrigatório"
+        },
+        telNumber:{
+
+        },
+        dnNumber:{
+
+        },
+        rs:{
+            required: "Este Campo é Obrigatório"
+        },
+        cnpjNumber:{
+            
+        },
+        nf:{
+            required: "Este Campo é Obrigatório"
+        }
     }
+});
 
-});*/
 
 
 
 // Máscaras 
 
-$('#cpfNumber').mask("000.000.000-00");
+$('#cpf_verifica').mask("000.000.000-00");
 
 $('#cnpjNumber').mask("00.000.000/0000-00");
 
@@ -36,9 +96,7 @@ $('#cep').mask("00000-000");
 
 //aceitando só números
 
-var dnNumber = document.getElementById("dnNumber");
-
-dnNumber.addEventListener("keypress", function(e) {
+$('#dnNumber').keypress(function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -57,7 +115,7 @@ function checkChar(e) {
     }
 };
 
-cpfNumber.addEventListener("keypress", function(e) {
+$('#cpf_verifica').keypress(function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -76,7 +134,7 @@ function checkChar(e) {
     }
 };
 
-cnpjNumber.addEventListener("keypress", function(e) {
+$('#cnpjNumber').keypress(function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -95,7 +153,7 @@ function checkChar(e) {
     }
 };
 
-cep.addEventListener("keypress", function(e) {
+$('#cep').keypress(function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -114,7 +172,7 @@ function checkChar(e) {
     }
 };
 
-telNumber.addEventListener("keypress", function(e) {
+$('#telNumber').keypress(function(e) {
 
     if(!checkChar(e)) {
         e.preventDefault();
@@ -132,41 +190,6 @@ function checkChar(e) {
         return true;
     }
 };
-
-function checaCPF (CPF) {
-    if (CPF.length != 11 || CPF == "00000000000" || CPF == "11111111111" ||
-    CPF == "22222222222" || CPF == "33333333333" || CPF == "44444444444" ||
-    CPF == "55555555555" || CPF == "66666666666" || CPF == "77777777777" ||
-    CPF == "88888888888" || CPF == "99999999999" || CPF == "01234567890")
-    return "o CPF não é válido";
-    soma = 0;
-    for (i=0; i < 9; i ++)
-    soma += parseInt(CPF.charAt(i)) * (10 - i);
-    resto = 11 - (soma % 11);
-    if (resto == 10 || resto == 11)
-    resto = 0;
-    if (resto != parseInt(CPF.charAt(9)))
-    return "o CPF não é válido";
-    soma = 0;
-    for (i = 0; i < 10; i ++)
-    soma += parseInt(CPF.charAt(i)) * (11 - i);
-    resto = 11 - (soma % 11);
-    if (resto == 10 || resto == 11)
-    resto = 0;
-    if (resto != parseInt(CPF.charAt(10)))
-    return "o CPF não é válido";
-          
-    return "O CPF é válido";
-    }
-
-    
-     
-
-    
-
-   // alert(checaCPF('34485861023'));
-
-
 
 
    function limpa_formulário_cep() {
@@ -237,7 +260,154 @@ else {
 }
 };
 
+function validacpf () {
 
-$('#senha').keypress(function() {
+    var cpf = document.formulario1.cpf_verifica.value;
+    cpf = cpf.replace( "." , "" );
+    cpf = cpf.replace( "-" , "" );
+    cpf = cpf.replace( "." , "" );
+    
+    if (cpf.length != 11 ||
+    cpf == "00000000000" ||
+    cpf == "11111111111" ||
+    cpf == "22222222222" ||
+    cpf == "33333333333" ||
+    cpf == "44444444444" ||
+    cpf == "55555555555" ||
+    cpf == "66666666666" ||
+    cpf == "77777777777" ||
+    cpf == "88888888888" ||
+    cpf == "99999999999"){
+    document.getElementById("cpf_verifica").style.backgroundColor = "#faa"; //isso deixa o campo avermelhado
+    document.formulario1.cpf_verifica.focus();
+    alert('CPF inválido');
+    return false;
+    } else {
+    var soma = 0;
+    soma = soma + (parseInt(cpf.substring( 0 , 1))) * 10;
+    soma = soma + (parseInt(cpf.substring( 1 , 2))) * 9;
+    soma = soma + (parseInt(cpf.substring( 2 , 3))) * 8;
+    soma = soma + (parseInt(cpf.substring( 3 , 4))) * 7;
+    soma = soma + (parseInt(cpf.substring( 4 , 5))) * 6;
+    soma = soma + (parseInt(cpf.substring( 5 , 6))) * 5;
+    soma = soma + (parseInt(cpf.substring( 6 , 7))) * 4;
+    soma = soma + (parseInt(cpf.substring( 7 , 8))) * 3;
+    soma = soma + (parseInt(cpf.substring( 8 , 9))) * 2;
+    }
+    
+    var resto1 = (soma * 10) % 11;
+    
+    if ((resto1 == 10) || (resto1 == 11)) {
+    resto1 = 0;
+    }
+    
+    var soma = 0;
+    soma = soma + (parseInt(cpf.substring( 0 , 1))) * 11;
+    soma = soma + (parseInt(cpf.substring( 1 , 2))) * 10;
+    soma = soma + (parseInt(cpf.substring( 2 , 3))) * 9;
+    soma = soma + (parseInt(cpf.substring( 3 , 4))) * 8;
+    soma = soma + (parseInt(cpf.substring( 4 , 5))) * 7;
+    soma = soma + (parseInt(cpf.substring( 5 , 6))) * 6;
+    soma = soma + (parseInt(cpf.substring( 6 , 7))) * 5;
+    soma = soma + (parseInt(cpf.substring( 7 , 8))) * 4;
+    soma = soma + (parseInt(cpf.substring( 8 , 9))) * 3;
+    soma = soma + (parseInt(cpf.substring( 9 , 10))) * 2;
+    
+    var resto2 = (soma *10) % 11;
+    if ((resto2 == 10) || (resto2 == 11)) {
+    resto2 = 0;
+    }
+    
+    if (
+    (resto1 == (parseInt(cpf.substring( 9 , 10)))) &&
+    (resto2 == (parseInt(cpf.substring( 10 , 11)))) ) {
+    return true;
+    } else {
+    alert ("CPF inválido")
+    document.getElementById("cpf_verifica").style.backgroundColor = "#faa";
+    document.formulario1.cpf_verifica.focus();
+    return false;
+    }
+    
+    }
 
-})
+
+
+
+$('#cnpjNumber').keypress(
+    
+    function _cnpj(cnpj) {
+
+        cnpj = cnpj.replace(/[^\d]+/g, '');
+    
+        if (cnpj == '') return false;
+    
+        if (cnpj.length != 14)
+            return false;
+    
+     
+        if (cnpj == "00000000000000" ||
+            cnpj == "11111111111111" ||
+            cnpj == "22222222222222" ||
+            cnpj == "33333333333333" ||
+            cnpj == "44444444444444" ||
+            cnpj == "55555555555555" ||
+            cnpj == "66666666666666" ||
+            cnpj == "77777777777777" ||
+            cnpj == "88888888888888" ||
+            cnpj == "99999999999999")
+            return false;
+    
+     
+        tamanho = cnpj.length - 2
+        numeros = cnpj.substring(0, tamanho);
+        digitos = cnpj.substring(tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2)
+                pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(0)) return false;
+        tamanho = tamanho + 1;
+        numeros = cnpj.substring(0, tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2)
+                pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(1))
+            return false;
+    
+        return true;
+    
+    });
+
+
+
+    $('#emailNumber').keypress(
+
+    function validacaoEmail(field) {
+        usuario = field.value.substring(0, field.value.indexOf("@"));
+        dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+        
+        if ((usuario.length >=1) &&
+            (dominio.length >=3) &&
+            (usuario.search("@")==-1) &&
+            (dominio.search("@")==-1) &&
+            (usuario.search(" ")==-1) &&
+            (dominio.search(" ")==-1) &&
+            (dominio.search(".")!=-1) &&
+            (dominio.indexOf(".") >=1)&&
+            (dominio.lastIndexOf(".") < dominio.length - 1)) {
+        $('#sSi').text("E-mail valido");
+        }
+        else{
+            $('#sSi').text("E-mail valido").css('color','red');
+        }
+        });

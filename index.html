@@ -10,6 +10,7 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3 /dist/jquery.validate.js "></script>
     <title>Formulário</title>
 </head>
 <body>
@@ -25,71 +26,73 @@
             background-color: #ffffffd0;
         }
     </style>
-    <form name="Ficha_de_cadastro" action="#" id="fc" method="get" class="p-4 mx-auto " style="width:500px; background-color: rgba(0, 0, 0, 0.062);">
+    <form name="formulario1" action="#" onSubmit="return validacpf();" id="fc" method="get" class="p-4 mx-auto " style="width:500px; background-color: rgba(0, 0, 0, 0.062);">
         <button type="button"  class="btn border border-dark rounded-5" style="width:170px; height:40px; margin-left:128px; background-color:rgb(99, 1, 255); color:aliceblue"
             id="btpj" name="btpj">Sou pessoa Juridica</button>    
         <div class="mt-3 was-validated">
             <div id="pp" class="row input-group mb-2 fw-semibold" style="text-align: center;">
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;" >Nome</label><br>
-                    <input class="border border-1 border-dark rounded-3" type="text"><br>
+                    <input class="border border-1 border-dark rounded-3" name="nome" type="text"><br>
                     
                 </div>
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">Sobrenome</label><br>
-                    <input class="border border-1 border-dark rounded-3" type="text"><br>
+                    <input class="border border-1 border-dark rounded-3" name="sobrenome" type="text"><br>
                 </div>
             </div>
             <div id="pp" class="row input-group mb-2 fw-semibold" style="text-align: center;">
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">CPF</label><br>
-                    <input class="border border-1 border-dark rounded-3" type="text" maxlength="14" id="cpfNumber" name="cpfNumber" required><br>
+                    <input class="border border-1 border-dark rounded-3" type="text" maxlength="14" id="cpf_verifica" name="cpf_verifica" required><br>
                 </div>
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">Email</label><br>
-                    <input class="border border-1 border-dark rounded-3" type="text" id="emailNumber" name="emailNumber" placeholder="  exemplo@gmail.com"><br>
+                    <input class="border border-1 border-dark rounded-3" type="text" id="emailNumber" name="emailNumber" placeholder="  exemplo@gmail.com" onblur="validacaoEmail(formulario1.emailNumber)"><br>
                 </div>
             </div>
             <div id="pp" class="row input-group mb-2 fw-semibold" style="text-align: center;">
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">Senha</label><br>
-                    <input class="border border-1 border-dark rounded-3" id="senha" type="password" pattern="[a-zA-Z0-9]{8}" maxlength="8"><br>
-                    <div class="valid-feedback" id="sSo">Senha OK</div>
-                    <div class="invalid-feedback" id="sSi">Senha Invalida</div>
+                    <input class="border border-1 border-dark rounded-3" name="senha" id="senha" type="password" pattern="[a-zA-Z0-9]{10}" maxlength="10"><br>
+                    <div id="sSf"></div>
+                    <div id="sSo"></div>
+                    <div id="sSi"></div>
                 </div>
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">Confirme a Senha</label><br>
-                    <input class="border border-1 border-dark rounded-3" id="cSenha" type="password" pattern="[a-zA-Z0-9]{8}" maxlength="8"><br>
-                    <div class="valid-feedback" id="cSso">Senha Correta</div>
-                    <div class="invalid-feedback" id="cSsi">Senha Invalida</div>
+                    <input class="border border-1 border-dark rounded-3" name="cSenha" id="cSenha" type="password" pattern="[a-zA-Z0-9]{10}" maxlength="10"><br>
+                    <div id="cSso"></div>
+                    <div id="cSsi"></div>
                 </div>
             </div>
             <div id="pp" class="row input-group mb-2 fw-semibold" style="text-align: center;">
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">Telefone</label><br>
-                    <input class="border border-1 border-dark rounded-3" type="tel" id="telNumber" name="telNumber" pattern="/([0-9]{2}\)[0-9]{4}-[0-9]{4})/"
+                    <input class="border border-1 border-dark rounded-3" type="text" id="telNumber" name="telNumber" pattern="\([0-9]{2}[0-9]{4}-[0-9]{4}\)"
                 placeholder="  (__)____-____" maxlength="13"><br>
                 </div>
                 <div class="col-md-6">
                     <label class="" style="color:aliceblue;">Data de Nascimento</label><br>
-                    <input class="border border-1 border-dark rounded-3" id="dnNumber" maxlength="10" type="text" pattern="" placeholder="   ___/___/____"><br>
+                    <input class="border border-1 border-dark rounded-3" name="dnNumber" id="dnNumber" maxlength="10" type="text" pattern="\([0-9]{2}/[0-9]{2}/[0-9]{4}\)" placeholder="   ___/___/____"><br>
                 </div>
         <section>
             <style>
                 #pj{
                     display:none;
                 }
+
             </style>
             <div id="pj" class="row input-group mb-2 fw-semibold" style="text-align: center; left:6px"> 
                 <div class="col-md-6 mt-3">
                     <label class="" style="color:aliceblue;">Razão Social</label><br>
-                    <input class=" border border-1 border-dark rounded-3" type="text"><br>
+                    <input class=" border border-1 border-dark rounded-3" type="text" name="rs"><br>
                     <label class="mt-2" style="color:aliceblue;">CNPJ</label><br>
-                    <input class=" border border-1 border-dark rounded-3" type="text" name="cnpjNumber" id="cnpjNumber" maxlength="18" required>
+                    <input class=" border border-1 border-dark rounded-3" type="text" name="cnpjNumber" id="cnpjNumber" maxlength="18" onblur="validarCNPJ(this)" required>
                 </div>
                 <div class="col-md-6 mt-3" >
                     <label class="" style="color:aliceblue; margin-left:14px;">Nome Fantasia</label><br>
-                    <input class="border border-1 border-dark rounded-3" style="margin-left:14px;"  type="text"><br>
+                    <input class="border border-1 border-dark rounded-3" style="margin-left:14px;" name="nf"  type="text"><br>
                 </div>
             </div>
         </section>
