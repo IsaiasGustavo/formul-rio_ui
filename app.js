@@ -25,7 +25,7 @@ $('#fc').validate({
         },
         cSenha:{
             required:true,
-            equalto: "#senha"
+            equalTo: "#senha"
         },
         telNumber:{
             phoneUS:true,
@@ -42,29 +42,37 @@ $('#fc').validate({
         },
         nf:{
             required:true
+        },
+        tc:{
+            required:true
         }
     },    
     messages:{
         nome:{
-            required: "Este Campo é Obrigatório"
+            required: "Este Campo é Obrigatório",
+            minlength: "O Nome deve ter no mínimo 4 caracteres"
         },
         sobrenome:{
-
+    
         },
         emailNumber:{
-            required: "Este Campo é Obrigatório"
+            required: "Este Campo é Obrigatório",
+            email: "insira um Email válido"
         },
         senha:{
-            required: "Este Campo é Obrigatório"
+            required: "Este Campo é Obrigatório",
+            rangelength: "Sua senha deve ter de 4 à 10 caracteres"
         },
         cSenha:{
-            required: "Este Campo é Obrigatório"
+            required: "Este Campo é Obrigatório",
+            equalTo: "Verifique se a Senha está correta"
         },
         telNumber:{
-
+            phoneUS:true,
+            number:true
         },
         dnNumber:{
-
+            dateDE:true
         },
         rs:{
             required: "Este Campo é Obrigatório"
@@ -74,6 +82,9 @@ $('#fc').validate({
         },
         nf:{
             required: "Este Campo é Obrigatório"
+        },
+        tc:{
+            required: "Aceite os Termos e Condições"
         }
     }
 });
@@ -278,9 +289,8 @@ function validacpf () {
     cpf == "77777777777" ||
     cpf == "88888888888" ||
     cpf == "99999999999"){
-    document.getElementById("cpf_verifica").style.backgroundColor = "#faa"; //isso deixa o campo avermelhado
+    document.getElementById("cpf_verifica").style.backgroundColor = ""; //isso deixa o campo avermelhado
     document.formulario1.cpf_verifica.focus();
-    alert('CPF inválido');
     return false;
     } else {
     var soma = 0;
@@ -323,8 +333,7 @@ function validacpf () {
     (resto2 == (parseInt(cpf.substring( 10 , 11)))) ) {
     return true;
     } else {
-    alert ("CPF inválido")
-    document.getElementById("cpf_verifica").style.backgroundColor = "#faa";
+    document.getElementById("cpf_verifica").style.backgroundColor = "";
     document.formulario1.cpf_verifica.focus();
     return false;
     }

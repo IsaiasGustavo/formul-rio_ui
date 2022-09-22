@@ -25,6 +25,9 @@
         input{
             background-color: #ffffffd0;
         }
+        label.error{
+            color:#c70f21;
+        }
     </style>
     <form name="formulario1" action="#" onSubmit="return validacpf();" id="fc" method="get" class="p-4 mx-auto " style="width:500px; background-color: rgba(0, 0, 0, 0.062);">
         <button type="button"  class="btn border border-dark rounded-5" style="width:170px; height:40px; margin-left:128px; background-color:rgb(99, 1, 255); color:aliceblue"
@@ -147,7 +150,7 @@
         <label class="" style="color:aliceblue;">Opiniões</label><br>
         <textarea placeholder="Comentários" style="background-color: #ffffffd0;" maxlength="200" class="border border-1 border-dark rounded-2"></textarea>
         <div id="tc" name="tc">
-            <input type="checkbox" style="color: #ffffffd0;" required>
+            <input type="checkbox" style="color: #ffffffd0;" name="tc">
             <label><a href=http://127.0.0.1:5501/index.html>Termos e Condições</a></label>
 
         </div>
